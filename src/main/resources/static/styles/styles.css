@@ -1,0 +1,80 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1.6rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+.is-active {
+  font-weight: bold;
+}
+
+h1 {
+  margin: 0;
+}
+
+.header {
+  background-color: purple;
+  color: black;
+}
+
+.header__title {
+  color: aliceblue;
+  font-size: 3.2rem;
+  padding-top: 3.2rem;
+}
+
+.header__link__list {
+  color: aliceblue;
+  padding: 3.2rem 0;
+}
+
+.header__link {
+  color: aliceblue;
+  padding-left: 3.2rem;
+  text-decoration: none;
+}
+
+.filter__text {
+  background: white;
+  border: none;
+  border-bottom: 0.3rem solid #bde0ff;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin: 0 0 1.2rem 0;
+  padding: 1.2rem;
+}
+
+.filter__select {
+  background: white;
+  border: none;
+  border-bottom: 0.3rem solid #bde0ff;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin: 0 0 1.2rem 0;
+  padding: 1.2rem;
+}
+
+.filter__data_range_picker {
+  background: black;
+  border: none;
+  border-bottom: 0.3rem solid #bde0ff;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin: 0 0 1.2rem 0;
+  padding: 1.2rem;
+}
+/*# sourceMappingURL=styles.css.map */
