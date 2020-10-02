@@ -1,6 +1,11 @@
 spring:
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/learning_management_app
-    username: postgres
-    password: postgres
+#    url: jdbc:postgresql://localhost:5432/learning_management_app
+#    username: postgres
+#    password: postgres
+
+# heroku DB情報  mysql://(--username--):(--password--)@(--hostname--)/(--dbname--)?reconnect=true
+    url: jdbc:postgresql://ec2-3-210-178-167.compute-1.amazonaws.com:5432/d9b12nspmlj9jf?sslmode=require
+    username: rxgjtyqkorheot
+    password: ac2cf252e1213cbc15f901d2f1c77b73cc8d8edca324b8844e6484046b7ba5b9
