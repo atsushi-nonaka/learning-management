@@ -19,7 +19,13 @@ h1 {
 }
 
 .header__link {
+    appearance: none;
+    background-color: transparent;
+    border: none;
     color: $off-white;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
     padding-left: $l-size;
     text-decoration: none;
 }

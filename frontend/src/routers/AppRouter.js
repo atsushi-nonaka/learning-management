@@ -4,14 +4,15 @@ import Header from '../components/Header'
 import Dashboard from '../components/Dashboard'
 import LearningRegistration from '../components/LearingRegistration'
 import LearningEdit from '../components/LearningEdit'
-import { MailForm } from '../components/MailForm'
+import LoginPage from '../components/LoginPage'
 import { NotFoundPage } from '../components/NotFoundPage'
 
 const AppRouter = () => (
     <BrowserRouter>
         <Header />
         <Switch>
-            <Route path="/" component={Dashboard} exact />
+            <Route path="/" component={LoginPage} exact/>
+            <Route path="/dashboard" component={Dashboard}/>
             <Route path="/registration" component={LearningRegistration} />
             <Route path="/edit/:id" component={LearningEdit} />
             <Route component={NotFoundPage} />

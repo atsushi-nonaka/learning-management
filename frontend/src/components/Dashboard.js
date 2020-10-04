@@ -7,7 +7,6 @@ const Dashboard = () => (
     <div className='dashboard'>
         <LearningListFilters />
         <LearningList />
-        <Chart />
     </div>
 )
 

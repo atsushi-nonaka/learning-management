@@ -7,12 +7,12 @@ import { startEditLEarningData, startRemoveLearningData } from '../actions/data'
 class LearningEdit extends React.Component {
     onSubmit = async (data) => {
         await this.props.dispatch(startEditLEarningData(this.props.data.id, data))
-        this.props.history.push('/')
+        this.props.history.push('/dashboard')
     }
 
     onRemove = async () => {
         await this.props.dispatch(startRemoveLearningData({ id: this.props.data.id }))
-        this.props.history.push('/')   
+        this.props.history.push('/dashboard')   
     }
 
     render(){

@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import DateFnsUtils from '@date-io/date-fns'
 import jaLocale from "date-fns/locale/ja"
-import { Button, TextField } from '@material-ui/core'
+import { Button, FormControl, TextField } from '@material-ui/core'
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
 
 import 'moment/locale/ja'
@@ -67,7 +67,7 @@ export default class LearningForm extends React.Component{
             <div>
                 {this.state.error && <p>{this.state.error}</p>}
                 <MuiPickersUtilsProvider utils={DateFnsUtils} locale={jaLocale}>
-                    <form>
+                    <FormControl>
                         <div>
                             <TextField
                                 id="outlined-multiline-flexible"
@@ -115,7 +115,7 @@ export default class LearningForm extends React.Component{
                         >
                         更新
                         </Button>
-                    </form>
+                    </FormControl>
                 </MuiPickersUtilsProvider>
             </div>
         )
