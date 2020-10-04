@@ -2,7 +2,6 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { startLogout } from '../actions/auth'
-import { Button } from '@material-ui/core'
 
 const Header = ({ startLogout }) => (
     <div className='header'>
@@ -11,7 +10,7 @@ const Header = ({ startLogout }) => (
             <NavLink to="/dashboard" className='header__link' activeClassName="is-active" exact>HOME</NavLink>
             <NavLink to="/registration" className='header__link' activeClassName="is-active">REGISTRATION</NavLink>
             <button 
-                className='header__link logout'
+                className='header__link'
                 onClick={startLogout}
             >
             LOGOUT
