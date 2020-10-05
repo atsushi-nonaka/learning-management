@@ -1,3 +1,7 @@
 # 学習管理アプリ
-## スキル
-Java, Spring Boot, Javascript, React, Node.js 
+## プログラミング言語
+Java8, Javascript
+
+## ライブラリ
+React v16.8.3, Redux v4.0.5, Moment v2.28.0, 
+
