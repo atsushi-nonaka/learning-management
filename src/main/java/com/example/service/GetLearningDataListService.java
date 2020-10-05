@@ -27,7 +27,7 @@ public class GetLearningDataListService {
 	 * 
 	 * @return 学習データ
 	 */
-	public List<LearningData> findAll() {
-		return repository.findAll();
+	public List<LearningData> findAll(String userId) {
+		return repository.findAll(userId);
 	}
 }

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -30,10 +32,10 @@ public class GetLearningDataController {
 	 * 
 	 * @return
 	 */
-	@GetMapping("/get_learning_data")
+	@PostMapping("/get_learning_data")
 	@CrossOrigin
 	@ResponseBody
-	public List<LearningData> getLearningDataList() {
-		return service.findAll();
+	public List<LearningData> getLearningDataList(@RequestBody String userId) {
+		return service.findAll(userId);
 	}
 }

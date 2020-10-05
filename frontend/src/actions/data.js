@@ -5,7 +5,7 @@ export const addLearningContent = (data) => ({
     data
 })
 
-export const addLearningContentInDB = (data) => {
+export const addLearningContentInDB = (data, userId) => {
     return async (dispatch) => {
         const {
         	 id = uuidv4(),
@@ -13,9 +13,10 @@ export const addLearningContentInDB = (data) => {
     	     note = '',
     	     date = 0,
     	     createdAt = 0,
-    	     updatedAt = 0
+             updatedAt = 0,
         } = data
-        const learningData = { id, language, note, date, createdAt, updatedAt }
+        console.log(userId)
+        const learningData = { id, language, note, date, createdAt, updatedAt, userId }
         await fetch('/insert_learning_data', {
         	method: 'POST',
         	body: JSON.stringify(learningData)
@@ -62,10 +63,13 @@ export const setLearningDataList = (dataList) => ({
     dataList
 })
 
-export const setLearningDataListFromDB = () => {
+export const setLearningDataListFromDB = (userId) => {
     return async (dispatch) => {
-        const jsonData = await fetch('/get_learning_data')
+        const jsonData = await fetch('/get_learning_data', {
+            method: 'POST',
+            body: userId
+        })
         const dataList = await jsonData.json()
-        dispatch(setLearningDataList(dataList))
+        await dispatch(setLearningDataList(dataList))
     }
 }

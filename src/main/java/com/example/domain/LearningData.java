@@ -30,4 +30,6 @@ public class LearningData {
 	private Date updatedAt;
 	/** 更新回数 */
 	private Integer version;
+	/** ユーザーID */
+	private String userId;
 }

@@ -36,6 +36,7 @@ public class LearningDataRepository {
 		data.setCreatedAt(rs.getDate("created_at"));
 		data.setUpdatedAt(rs.getDate("updated_at"));
 		data.setVersion(rs.getInt("version"));
+		data.setUserId(rs.getString("user_id"));
 		return data;
 	};
 	
@@ -48,7 +49,7 @@ public class LearningDataRepository {
 	 * @param data 学習管理データ
 	 */
 	public void insert(LearningData data) {
-		String sql = "INSERT INTO " + TABLE_NAME + "(id, language, note, date, created_at, updated_at, version) VALUES(:id, :language, :note, :date, :createdAt, :updatedAt, :version)";
+		String sql = "INSERT INTO " + TABLE_NAME + "(id, language, note, date, created_at, updated_at, version, user_id) VALUES(:id, :language, :note, :date, :createdAt, :updatedAt, :version, :userId)";
 		SqlParameterSource param = new BeanPropertySqlParameterSource(data);
 		template.update(sql, param);
 	}
@@ -58,9 +59,9 @@ public class LearningDataRepository {
 	 * 
 	 * @return 全学習データ
 	 */
-	public List<LearningData> findAll() {
-		String sql = "SELECT id, language, note, date, created_at, updated_at, version FROM " + TABLE_NAME + " Order by id";
-		SqlParameterSource param = new MapSqlParameterSource();
+	public List<LearningData> findAll(String userId) {
+		String sql = "SELECT id, language, note, date, created_at, updated_at, version, user_id FROM " + TABLE_NAME + " WHERE user_id = :userId Order by id";
+		SqlParameterSource param = new MapSqlParameterSource().addValue("userId", userId);
 		return template.query(sql, param, LEARNINGDATA_ROW_MAPPER);
 	}
 	
@@ -71,7 +72,7 @@ public class LearningDataRepository {
 	 * @return 学習データ
 	 */
 	public LearningData findById(String id) {
-		String sql = "SELECT id, language, note, date, created_at, updated_at, version FROM " + TABLE_NAME + " WHERE id = :id";
+		String sql = "SELECT id, language, note, date, created_at, updated_at, version, user_id FROM " + TABLE_NAME + " WHERE id = :id";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
 		return template.queryForObject(sql, param, LEARNINGDATA_ROW_MAPPER);
 	}

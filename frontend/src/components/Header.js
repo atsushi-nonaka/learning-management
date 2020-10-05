@@ -7,7 +7,7 @@ const Header = ({ startLogout }) => (
     <div className='header'>
         <h1 className='header__title'>学習管理アプリ</h1>
         <div className='header__link__list'>
-            <NavLink to="/dashboard" className='header__link' activeClassName="is-active" exact>HOME</NavLink>
+            <NavLink to="/dashboard" className='header__link' activeClassName="is-active">HOME</NavLink>
             <NavLink to="/registration" className='header__link' activeClassName="is-active">REGISTRATION</NavLink>
             <button 
                 className='header__link'

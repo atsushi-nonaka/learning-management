@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import AppRouter from './routers/AppRouter'
+import AppRouter, { history } from './routers/AppRouter'
 import configureStore from './store/configureStore'
 import { setLearningDataListFromDB } from './actions/data'
+import { login, logout } from './actions/auth'
 import { firebase } from './firebase/firebase'
 
 import 'normalize.css/normalize.css'
@@ -17,17 +18,28 @@ const jsx = (
     </Provider>
 )
 
+let hasRenders = false
+const renderApp = () => {
+    if(!hasRenders) {
+        ReactDOM.render(jsx, document.getElementById('app'))
+        hasRenders = true
+    }
+}
+
 ReactDOM.render(<p>Loading...</p>, document.getElementById('app'))
 
-store.dispatch(setLearningDataListFromDB()).then(() =>{
-    ReactDOM.render(jsx, document.getElementById('app'))
-})
-
-firebase.auth().onAuthStateChanged((user) => {
+firebase.auth().onAuthStateChanged(async (user) => {
     if(user) {
-        console.log('log in')
+        await store.dispatch(login(user.uid))
+        await store.dispatch(setLearningDataListFromDB(user.uid))
+        renderApp()
+        if(history.location.pathname === '/') {
+            history.push('/dashboard') 
+        }
     }else {
-        console.log('log out')
+        store.dispatch(logout())
+        renderApp()
+        history.push('/')
     }
 })
 

@@ -5,7 +5,8 @@ import { addLearningContentInDB } from '../actions/data'
  
 class LearningRegistration extends React.Component {
     onSubmit = async (data) => {
-        await this.props.addLearningContentInDB(data)
+        console.log(this.props.userId)
+        await this.props.addLearningContentInDB(data, this.props.userId)
         this.props.history.push('/dashboard')        	
     }
 
@@ -18,8 +19,12 @@ class LearningRegistration extends React.Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    addLearningContentInDB: (data) => dispatch(addLearningContentInDB(data)) 
+const mapStateToProps = (state) => ({
+    userId: state.auth.uid
 })
 
-export default connect(undefined, mapDispatchToProps)(LearningRegistration)
+const mapDispatchToProps = (dispatch) => ({
+    addLearningContentInDB: (data, userId) => dispatch(addLearningContentInDB(data, userId)) 
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LearningRegistration)

@@ -71,31 +71,6 @@ class LearningList extends React.Component {
     }
 }
 
-// const getLearningList = (dataList) => {
-//     return dataList.length !== 0 ? dataList.map((data) => {
-//         return <LearningData key={data.id} data={data} />  
-//     }) : <p>データがありません</p>
-// }
-
-// export const LearningList = (props) => (
-//     <div>
-//         <TableContainer component={Paper}>
-//             <Table>
-//                 <TableHead>
-//                     <TableRow>
-//                         <TableCell>日付</TableCell>
-//                         <TableCell>プログラミング言語</TableCell>
-//                         <TableCell>メモ</TableCell>
-//                     </TableRow>
-//                 </TableHead>
-//                 <TableBody>
-//                     {getLearningList(props.dataList)}
-//                 </TableBody>
-//             </Table>
-//         </TableContainer>
-//     </div>
-// )
-
 const mapStateToProps = (state) => ({
     dataList: selectorData(state.data, state.filters)
 })
