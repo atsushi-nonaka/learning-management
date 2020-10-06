@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { LearningData } from './LearningData'
+import { history } from '../routers/AppRouter'
 import selectorData from '../selector/data'
 import { 
     Table,

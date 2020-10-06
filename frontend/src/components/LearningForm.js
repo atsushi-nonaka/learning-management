@@ -19,7 +19,8 @@ export default class LearningForm extends React.Component{
             createdAt: props.data ? moment(props.data.createdAt) : moment(),
             updatedAt: moment(),
             calendarFocused: false,
-            error: ''
+            error: '',
+            isButton: false
         }
     }
 
@@ -46,11 +47,13 @@ export default class LearningForm extends React.Component{
     isOutsideRange = (day) => {
         return day.isAfter(moment().endOf('week')) || day.isBefore(moment().startOf('week'))
     }
-
-    onSubmit = (e) => {
+    
+    onSubmit = async (e) => {
         e.preventDefault()
+        await this.changeButtonState()
         if(!this.state.language.trim()){
-            this.setState({ error: 'プログラミング言語が選ばれていません' })
+            this.setState(() => ({ error: 'プログラミング言語が選ばれていません' }))
+            this.changeButtonState()
         }else{
             this.props.onSubmit({
                 language: this.state.language.trim(),
@@ -60,6 +63,10 @@ export default class LearningForm extends React.Component{
                 updatedAt: this.state.updatedAt.valueOf()
             })
         }
+    }
+    
+    changeButtonState = () => {
+        this.setState(() => ({ isButton: !this.state.isButton }))
     }
 
     render(){
@@ -73,8 +80,6 @@ export default class LearningForm extends React.Component{
                                 id="outlined-multiline-flexible"
                                 label="プログラミング言語"
                                 type='text'
-                                multiline
-                                rowsMax={4}
                                 required
                                 variant="outlined"
                                 placeholder='Java'
@@ -112,6 +117,7 @@ export default class LearningForm extends React.Component{
                             variant="outlined" 
                             color="primary" 
                             onClick={this.onSubmit}
+                            disabled={this.state.isButton}
                         >
                         更新
                         </Button>

@@ -5,7 +5,6 @@ import { addLearningContentInDB } from '../actions/data'
  
 class LearningRegistration extends React.Component {
     onSubmit = async (data) => {
-        console.log(this.props.userId)
         await this.props.addLearningContentInDB(data, this.props.userId)
         this.props.history.push('/dashboard')        	
     }
