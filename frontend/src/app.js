@@ -28,10 +28,10 @@ const renderApp = () => {
 
 ReactDOM.render(<p>Loading...</p>, document.getElementById('app'))
 
-firebase.auth().onAuthStateChanged((user) => {
+firebase.auth().onAuthStateChanged(async (user) => {
     if(user) {
-        store.dispatch(login(user.uid))
-        store.dispatch(setLearningDataListFromDB(user.uid))
+        await store.dispatch(setLearningDataListFromDB(user.uid))
+        await store.dispatch(login(user.uid))
         renderApp()
         if(history.location.pathname === '/') {
             history.push('/dashboard') 

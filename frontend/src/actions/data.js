@@ -70,6 +70,6 @@ export const setLearningDataListFromDB = (userId) => {
             body: userId
         })
         const dataList = await jsonData.json()
-        await dispatch(setLearningDataList(dataList))
+        dispatch(setLearningDataList(dataList))
     }
 }
