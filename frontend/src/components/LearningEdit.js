@@ -19,12 +19,17 @@ class LearningEdit extends React.Component {
         return (
             <div>
                 <LearningForm onSubmit={this.onSubmit} onRemove={this.onRemove} data={this.props.data} />
-                <Button
-                    type="button" 
-                    variant="outlined" 
-                    color="primary"  
-                    onClick={this.onRemove}
-                >削除</Button>
+                <div className="remove__button">
+                    <Button
+                        type="button" 
+                        variant="outlined" 
+                        color="primary"  
+                        onClick={this.onRemove}
+                        fullWidth={true}
+                    >
+                        削除
+                    </Button>
+                </div>
             </div>
         )
     }

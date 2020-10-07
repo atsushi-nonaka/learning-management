@@ -46,9 +46,9 @@ class LearningList extends React.Component {
                     <Table>
                         <TableHead>
                             <TableRow>
-                                <TableCell>学習日</TableCell>
-                                <TableCell>プログラミング言語</TableCell>
-                                <TableCell>メモ</TableCell>
+                                <TableCell><span className="table__column__title">学習日</span></TableCell>
+                                <TableCell><span className="table__column__title">プログラミング言語</span></TableCell>
+                                <TableCell><span className="table__column__title">メモ</span></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>

@@ -3,8 +3,11 @@ import DateFnsUtils from '@date-io/date-fns'
 import jaLocale from "date-fns/locale/ja"
 import moment from 'moment'
 import { connect } from 'react-redux'
-import { Select, MenuItem, TextField } from '@material-ui/core'
-import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
+import {
+    MenuItem, 
+    TextField 
+} from '@material-ui/core'
+import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
 import { setTextFilter, setStartDate, setEndDate, sortByAtoZ ,sortByZtoA, sortByDate } from '../actions/filters'
  
 export class LearningListFilters extends React.Component {
@@ -45,47 +48,64 @@ export class LearningListFilters extends React.Component {
     render(){
         return (
             <div className="filter">
-                <TextField 
-                    id="outlined-basic" 
-                    type="text" 
-                    value={this.props.filters.text} 
-                    onChange={this.onTextChange}
-                    placeholder="Java"
-                    className="filter__text"
-                    label="テキスト検索" 
-                    variant="outlined" 
-                />
-                <Select
-                    value={this.props.filters.sortBy}    
-                    onChange={this.onSortChange}
-                >
-                    <MenuItem value='date'>学習日順</MenuItem>
-                    <MenuItem value='atoz'>A→Z</MenuItem>
-                    <MenuItem value='ztoa'>Z→A</MenuItem>
-                </Select>
-                
-                <MuiPickersUtilsProvider utils={DateFnsUtils} locale={jaLocale}>
-                    <KeyboardDatePicker
-                        margin="normal"
-                        label="開始日"
-                        format="yyyy/MM/dd"
-                        value={this.props.filters.startDate}
-                        onChange={this.onStartDateChange}
-                        KeyboardButtonProps={{
-                            'aria-label': 'change date',
-                        }}
+                <div>
+                    <TextField 
+                        id="outlined-basic" 
+                        type="text" 
+                        value={this.props.filters.text} 
+                        onChange={this.onTextChange}
+                        InputLabelProps={{ style: { fontSize: 12 }}}
+                        InputProps={{ style: { fontSize: 12 } }}
+                        className="filter__text"
+                        placeholder="Java"
+                        label="テキスト検索" 
+                        variant="outlined" 
                     />
-                    <KeyboardDatePicker
-                        margin="normal"
-                        label="終了日"
-                        format="yyyy/MM/dd"
-                        value={this.props.filters.endDate}
-                        onChange={this.onEndDateChange}
-                        KeyboardButtonProps={{
-                            'aria-label': 'change date',
-                        }}
-                    />
-                </MuiPickersUtilsProvider>
+                </div>
+                <div>
+                    <TextField
+                        select
+                        value={this.props.filters.sortBy}    
+                        onChange={this.onSortChange} 
+                        className="filter__select"  
+                        label="ソート"
+                        InputLabelProps={{ style: { fontSize: 12 }}}
+                        InputProps={{ style: { fontSize: 12 } }}
+                        variant="outlined" 
+                    >
+                        <MenuItem value='date'>学習日順</MenuItem>
+                        <MenuItem value='atoz'>A→Z</MenuItem>
+                        <MenuItem value='ztoa'>Z→A</MenuItem>
+                    </TextField>
+                </div>
+                <div>
+                    <MuiPickersUtilsProvider utils={DateFnsUtils} locale={jaLocale}>
+                        <DatePicker
+                            margin="none"
+                            label="開始日"
+                            format="yyyy/MM/dd"
+                            value={this.props.filters.startDate}
+                            onChange={this.onStartDateChange}
+                            className="filter__calendar"
+                            InputLabelProps={{ style: { fontSize: 12 } }}
+                            InputProps={{ style: { fontSize: 12 } }}
+                            inputVariant="outlined"
+                            variant="inline"
+                        />
+                        <DatePicker
+                            margin="none"
+                            label="終了日"
+                            format="yyyy/MM/dd"
+                            value={this.props.filters.endDate}
+                            onChange={this.onEndDateChange}
+                            className="filter__calendar"
+                            InputLabelProps={{ style: { fontSize: 12 } }}
+                            InputProps={{ style: { fontSize: 12 } }}
+                            inputVariant="outlined"
+                            variant="inline"
+                        />
+                    </MuiPickersUtilsProvider>
+                </div>
             </div>
         )
     }

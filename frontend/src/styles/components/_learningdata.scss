@@ -1,6 +1,9 @@
 .link__to__edit {
     display: block;
-    width:100%;
+    width: $max-size;
     text-decoration: none;
     color: black;
+    white-space: pre;
+    font-size: $s-size;
 }
+

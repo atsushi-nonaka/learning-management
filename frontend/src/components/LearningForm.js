@@ -3,7 +3,7 @@ import moment from 'moment'
 import DateFnsUtils from '@date-io/date-fns'
 import jaLocale from "date-fns/locale/ja"
 import { Button, FormControl, TextField } from '@material-ui/core'
-import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
+import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
 
 import 'moment/locale/ja'
 import 'react-dates/initialize'
@@ -24,6 +24,10 @@ export default class LearningForm extends React.Component{
         }
     }
 
+    changeButtonState = () => {
+        this.setState(() => ({ isButton: !this.state.isButton }))
+    }
+    
     onLanguageChange = (e) => {
         const language = e.target.value
         this.setState(() => ({ language }))
@@ -44,10 +48,6 @@ export default class LearningForm extends React.Component{
         this.setState(() => ({ calendarFocused: focused }))
     }
 
-    isOutsideRange = (day) => {
-        return day.isAfter(moment().endOf('week')) || day.isBefore(moment().startOf('week'))
-    }
-    
     onSubmit = async (e) => {
         e.preventDefault()
         await this.changeButtonState()
@@ -64,63 +64,75 @@ export default class LearningForm extends React.Component{
             })
         }
     }
-    
-    changeButtonState = () => {
-        this.setState(() => ({ isButton: !this.state.isButton }))
-    }
 
     render(){
         return(
             <div>
-                {this.state.error && <p>{this.state.error}</p>}
                 <MuiPickersUtilsProvider utils={DateFnsUtils} locale={jaLocale}>
-                    <FormControl>
-                        <div>
-                            <TextField
-                                id="outlined-multiline-flexible"
-                                label="プログラミング言語"
-                                type='text'
-                                required
-                                variant="outlined"
-                                placeholder='Java'
-                                onChange={this.onLanguageChange}
-                                value={this.state.language}
-                            />
+                    <FormControl fullWidth={true}>
+                        <div className="form">
+                            {this.state.error && <p>{this.state.error}</p>}
+                            <div className="form__language">
+                                <TextField
+                                    id="outlined-multiline-flexible"
+                                    label="プログラミング言語"
+                                    type='text'
+                                    required
+                                    variant="outlined"
+                                    placeholder='Java'
+                                    onChange={this.onLanguageChange}
+                                    value={this.state.language}
+                                    InputLabelProps={{ style: { fontSize: 12 }}}
+                                    InputProps={{ style: { fontSize: 12 } }}
+                                    className="form__input__language"
+                                />
+                            </div>
+                            <div className="form__note">
+                                <TextField
+                                    id="outlined-multiline-static"
+                                    label="メモ"
+                                    multiline
+                                    rows={4}
+                                    variant="outlined"
+                                    onChange={this.onNoteChange}
+                                    value={this.state.note}
+                                    InputLabelProps={{ style: { fontSize: 12 }}}
+                                    InputProps={{ style: { fontSize: 12 } }}
+                                    className="form__input__note"
+                                />
+                            </div>
+                            <div className="form__calendar">
+                                <DatePicker
+                                    margin="normal"
+                                    id="date-picker-dialog"
+                                    label="学習日"
+                                    format="yyyy/MM/dd"
+                                    disableFuture={() => false}
+                                    value={this.state.date}
+                                    onChange={this.onDateChange}
+                                    InputLabelProps={{ style: { fontSize: 12 } }}
+                                    InputProps={{ 
+                                        style: { fontSize: 12 }
+                                    }}
+                                    inputVariant="outlined"
+                                    variant="inline"
+                                    className="form__input__calendar"
+                                />
+                            </div>
+                            <div className="form__button">
+                                <Button 
+                                    type="button" 
+                                    variant="outlined" 
+                                    color="primary" 
+                                    onClick={this.onSubmit}
+                                    disabled={this.state.isButton}
+                                    className="form__submit__button"
+                                    fullWidth={true}
+                                >
+                                    更新
+                                </Button>
+                            </div>
                         </div>
-                        <div>
-                            <TextField
-                                id="outlined-multiline-static"
-                                label="メモ"
-                                multiline
-                                rows={4}
-                                variant="outlined"
-                                onChange={this.onNoteChange}
-                                value={this.state.note}
-                            />
-                        </div>
-                        <div>
-                            <KeyboardDatePicker
-                                margin="normal"
-                                id="date-picker-dialog"
-                                label="学習日"
-                                format="yyyy/MM/dd"
-                                disableFuture={() => false}
-                                value={this.state.date}
-                                onChange={this.onDateChange}
-                                KeyboardButtonProps={{
-                                    'aria-label': 'change date',
-                                }}
-                            />
-                        </div>
-                        <Button 
-                            type="button" 
-                            variant="outlined" 
-                            color="primary" 
-                            onClick={this.onSubmit}
-                            disabled={this.state.isButton}
-                        >
-                        更新
-                        </Button>
                     </FormControl>
                 </MuiPickersUtilsProvider>
             </div>

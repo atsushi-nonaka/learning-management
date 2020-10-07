@@ -5,7 +5,6 @@ const devUrl = 'http://localhost:8080'
 module.exports = (env) => {
     const isProduction = env === 'production'
     const CSSExtract = new MiniCssExtractPlugin({ 
-        //filename: 'styles.css'
         filename: isProduction ? '../../src/main/resources/static/styles/styles.css' : 'styles.css'
     })
 
@@ -45,7 +44,6 @@ module.exports = (env) => {
         devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {
             contentBase: path.join(__dirname, 'public'),
-            //contentBase: path.join(__dirname, '../src/main/resources/static/built'),
             historyApiFallback: true,
             proxy: [{
                 context: ['/insert*', '/get*', '/delete*', '/update*'],

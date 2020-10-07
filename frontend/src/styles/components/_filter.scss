@@ -1,26 +1,10 @@
-.filter__text {
-    background: white;
-    border: none;
-    border-bottom: .3rem solid darken($off-white, 10%);
-    flex-grow: 1;
-    margin: 0 0 $s-size 0;
-    padding: $s-size;
+.filter {
+    display: flex;
+    flex-wrap: nowrap;
+    width: $max-size;
+    margin: $min-size 0;
 }
 
-.filter__select {
-    background: white;
-    border: none;
-    border-bottom: .3rem solid darken($off-white, 10%);
-    flex-grow: 1;
-    margin: 0 0 $s-size 0;
-    padding: $s-size;
-}
-
-.filter__data_range_picker {
-    background: black;
-    border: none;
-    border-bottom: .3rem solid darken($off-white, 10%);
-    flex-grow: 1;
-    margin: 0 0 $s-size 0;
-    padding: $s-size;
+.filter_calendar {
+    margin: 0;
 }
