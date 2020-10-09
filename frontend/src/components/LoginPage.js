@@ -5,13 +5,14 @@ import { Button } from '@material-ui/core';
 
 export const LoginPage = ({ startLogin }) => (
     <div>
+        <div id="firebaseui-auth-container"></div>
         <Button 
             type="button"
             variant="outlined" 
             color="primary" 
             onClick={startLogin}
         >
-            ログイン
+            Googleアカウントでログイン
         </Button>
     </div>
 )

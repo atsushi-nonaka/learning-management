@@ -58,7 +58,7 @@ class LearningList extends React.Component {
                     </Table>
                 </TableContainer>
                 <TablePagination
-                    rowsPerPageOptions={[5, 10, 20]}
+                    rowsPerPageOptions={[5, 10, 20, 30, 50]}
                     component="div"
                     count={this.props.dataList.length}
                     rowsPerPage={rowsPerPage}

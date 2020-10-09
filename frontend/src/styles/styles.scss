@@ -1,9 +1,11 @@
 @import './base/settings';
 @import './base/base';
-@import './components/login';
-@import './components/header';
+@import './components/chart';
+@import './components/dashboard';
 @import './components/filter';
+@import './components/header';
+@import './components/login';
 @import './components/learningdata';
-@import './components/learningform';
 @import './components/learningedit';
+@import './components/learningform';
 @import './components/learninglist';

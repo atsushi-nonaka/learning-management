@@ -16,6 +16,7 @@ export class LearningListFilters extends React.Component {
     }
 
     onTextChange = (e) => {
+        e.preventDefault()
         const text = e.target.value
         this.props.dispatch(setTextFilter(text))
     }
@@ -25,6 +26,7 @@ export class LearningListFilters extends React.Component {
     }
 
     onSortChange = (e) => {
+        e.preventDefault()
         switch(e.target.value){
             case 'atoz':
                 this.props.dispatch(sortByAtoZ())
