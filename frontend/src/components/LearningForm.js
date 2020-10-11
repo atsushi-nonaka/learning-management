@@ -35,7 +35,9 @@ export default class LearningForm extends React.Component{
 
     onNoteChange = (e) => {
         const note = e.target.value
-        this.setState(() => ({ note }))
+        if(note.length <= 200){
+            this.setState(() => ({ note }))
+        }
     }
 
     onDateChange = (date) => {

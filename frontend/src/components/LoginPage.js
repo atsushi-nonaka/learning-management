@@ -4,16 +4,23 @@ import { startLogin } from '../actions/auth'
 import { Button } from '@material-ui/core';
 
 export const LoginPage = ({ startLogin }) => (
-    <div>
-        <div id="firebaseui-auth-container"></div>
-        <Button 
-            type="button"
-            variant="outlined" 
-            color="primary" 
-            onClick={startLogin}
-        >
-            Googleアカウントでログイン
-        </Button>
+    <div className="login">
+        <div className="login__form">   
+            <h1 className="login__form__title">LOGIN</h1>
+            <div className="login__form__button">
+                <div className="login__form__button__google">
+                    <Button
+                        color="default"
+                        onClick={startLogin}
+                        style={{ fontSize: '1.2rem' }}
+                        type="button"
+                        variant="contained"
+                    >
+                        Login with google
+                    </Button>
+                </div>
+            </div>
+        </div>
     </div>
 )
 

@@ -1,9 +1,55 @@
-.login__form {
-    width: 50%;
-    margin: 0 auto;
+.login {
+    background-color: purple;
+    height: 100vh;
+    position: relative;
+    width: $max-size;
 }
 
-.login__form__field {
-    width: 100%;
+.login__form {
+    background-color: $off-white;
+    border: 2px solid $off-white;
+    border-radius: $min-size;
+    bottom: 0;
+    height: $login-form-size;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    vertical-align: middle;
+    width: $login-width;
+}
+
+.login__form__button {
+    margin-top: $small-size;
+}
+
+.login__form__title {
+    margin-top: $small-size;
+    border-bottom: 1px solid $dark-gray;
+    padding-bottom: $small-size;
+}
+
+@media(max-width: $desktop-breakpoint){
+    .login__form {
+        background-color: $off-white;
+        border: 2px solid $off-white;
+        border-radius: $min-size;
+        bottom: 0;
+        height: $login-form-size;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: 0;
+        vertical-align: middle;
+        width: $half-size;
+    }
+
+    .login__form__button {
+        margin-top: $middle-size;
+    }
 }
 

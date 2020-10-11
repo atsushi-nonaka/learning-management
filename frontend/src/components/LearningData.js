@@ -9,17 +9,17 @@ from '@material-ui/core'
 
 export const LearningData = (props) => (
     <TableRow hover={true} onClick={props.handleClick}>
-        <TableCell>
+        <TableCell className="date">
             <Link className="link__to__edit" to={`/edit/${props.data.id}`}>
                 {moment(props.data.date).format('ll')}
             </Link>
         </TableCell>
-        <TableCell>
+        <TableCell className="language">
             <Link className="link__to__edit" to={`/edit/${props.data.id}`}>
                 {props.data.language}
             </Link>
         </TableCell>
-        <TableCell>
+        <TableCell className="note">
             <Link className="link__to__edit" to={`/edit/${props.data.id}`}>
                 {props.data.note}
             </Link>

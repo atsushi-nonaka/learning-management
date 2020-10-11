@@ -1,9 +1,17 @@
+.date {
+    width: 15%;
+}
+
+.language {
+    width: 25%;
+}
+
 .link__to__edit {
     display: block;
     width: $max-size;
     text-decoration: none;
     color: black;
-    white-space: pre;
+    white-space: pre-wrap;
     font-size: $s-size;
 }
 
