@@ -1,0 +1,20 @@
+@media(min-width: $desktop-breakpoint){
+    #chart {
+        display: flex;
+        width: $max-size;
+    }
+
+    #pie-chart {
+        width: $half-size;
+    }
+
+    #bar-chart {
+        width: $half-size;
+    }
+}
+
+@media(max-width: $desktop-breakpoint){
+    #chart {
+        width: $max-size;
+    }
+}

@@ -1,0 +1,25 @@
+.form {
+    width: $half-size;
+    margin: 0 auto;
+}
+
+.form__language{
+    margin-top: $min-size;
+}
+
+.form__note {
+    margin-top: $min-size;
+}
+
+.form__calendar {
+    margin-top: $min-size;
+}
+
+.form__button {
+    margin-top: $min-size;
+}
+
+.form__input__language, 
+.form__input__note {
+    width: $max-size;
+}
